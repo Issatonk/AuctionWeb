@@ -1,0 +1,16 @@
+﻿@model ICollection<Auction.Storage.Entity.Income> 
+
+<table>
+    <tr>
+        <th>Дата</th>
+        <th>Доход</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.IncomeSum</td>
+        </tr>
+    }
+
+</table>

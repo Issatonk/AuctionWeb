@@ -1,0 +1,50 @@
+﻿<link rel="stylesheet" href="~/css/addlot.css" />
+<div id="header-strip"></div>
+<div class="content">
+    <form asp-action="Add" asp-controller="Lot" method="post" enctype="multipart/form-data">
+        <div id="photo-and-title">
+            <div id="title-closedate">
+                <textarea name="Name" id="title" placeholder="Заголовок"></textarea>
+            </div>
+            <div id="main-img">
+                <label>Выберите главное фото</label><br>
+                <input type="file" name="mainPhoto" /><br>
+                <label>Выберите фото</label><br>
+                <input type="file" name="uploads" /><br>
+                <input type="file" name="uploads" /><br>
+                <input type="file" name="uploads" /><br>
+                <input type="file" name="uploads" /><br>
+            </div>
+        </div>
+        <div id="lot-description">
+            <div id="price-and-closedate">
+                <div id="price">
+                    <p>Сделать ставку</p>
+                    <input type="number" name="CurrentPrice" value="" placeholder="Введите цену" maxlength="12" />
+                </div>
+                <div id="closedate">
+                    <p>Время окончания</p>
+                    <textarea name="FinalDate" id="FinalDate" placeholder="06.03.1995"></textarea>
+                </div>
+                <div id="submit">
+                    <p>ᅠ</p>
+                    <input type="submit" value="Отправить" />
+                </div>
+            </div>
+            <p>Выберите категорию</p>
+            <select name="Category">
+                <option value="Машины">Машины</option>
+                <option value="Самолёты">Самолёты</option>
+                <option value="Яхты">Яхты</option>
+                <option value="Рабы">Рабы</option>
+                <option value="Хаты">Хаты</option>
+                <option value="Электроника">Электроника</option>
+                <option value="Другое">Другое</option>
+            </select>
+            <p>Описание лота.</p>
+            <textarea name="Description" id="Description"></textarea>
+        </div>
+    </form>
+</div>
+
+

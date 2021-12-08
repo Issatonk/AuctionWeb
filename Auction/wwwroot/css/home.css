@@ -1,0 +1,84 @@
+﻿.content {
+    width: 100%;
+    min-width: 320px;
+    margin: 0 auto;
+    display: flex;
+}
+
+#offer {
+    width: 50%;
+    align-content: space-between;
+}
+
+#hammer {
+    width: 50%;
+}
+
+    #hammer img {
+        max-height: 700px;
+        max-width: 100%;
+        float: right;
+    }
+
+#offer h1 {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 43px;
+    line-height: 48px;
+    margin-top: 163px;
+}
+
+#offer h2 {
+    font-family: Montserrat;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 0;
+}
+
+#offer button {
+    width: 305px;
+    height: 55px;
+    margin-top: 52px;
+    border-radius: 3px;
+    border: none;
+    background-color: #F58E2E;
+    color: white;
+    font-size: 22px;
+    filter: drop-shadow(-6px 5px 25px rgba(184, 117, 55, 0.3));
+}
+
+@media (min-width: 1200px) {
+    .content {
+        max-width: 1440px;
+    }
+}
+
+@media (max-width: 450px) {
+    .content {
+        flex-direction: column-reverse;
+        margin: 0 7px;
+    }
+
+    #offer {
+        width: 100%;
+    }
+
+    #hammer {
+        width: 100%;
+    }
+
+    #offer h1 {
+        font-size: 20px;
+        margin-top: 15px;
+        line-height: 20px;
+    }
+
+    #offer h2 {
+        font-size: 15px;
+        line-height: 15px;
+        margin-top: 0;
+    }
+}

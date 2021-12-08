@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auction", "Auction\Auction.csproj", "{62B9DA2B-CADC-4AC8-80B5-90900C3A04DA}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AuctionDatabase", "AuctionDatabase\AuctionDatabase.sqlproj", "{64683F96-BEE2-4475-B08D-C1ADDDD90E57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62B9DA2B-CADC-4AC8-80B5-90900C3A04DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B9DA2B-CADC-4AC8-80B5-90900C3A04DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B9DA2B-CADC-4AC8-80B5-90900C3A04DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B9DA2B-CADC-4AC8-80B5-90900C3A04DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64683F96-BEE2-4475-B08D-C1ADDDD90E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64683F96-BEE2-4475-B08D-C1ADDDD90E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64683F96-BEE2-4475-B08D-C1ADDDD90E57}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{64683F96-BEE2-4475-B08D-C1ADDDD90E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64683F96-BEE2-4475-B08D-C1ADDDD90E57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64683F96-BEE2-4475-B08D-C1ADDDD90E57}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8D912BB-D780-4A3D-9489-AD9C83221B94}
+	EndGlobalSection
+EndGlobal

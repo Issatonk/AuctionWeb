@@ -1,0 +1,45 @@
+﻿@model ICollection<Auction.Storage.Entity.Lot>
+<link rel="stylesheet" href="~/css/all_lots.css" />
+<div id="header-strip"></div>
+
+
+
+
+<div class="content">
+
+    <div id="sort">
+        <p>Сортировка по:</p>
+        <a asp-action="AllLots"asp-route-category="@ViewBag.category" asp-route-sortOrder="@ViewBag.PriceAsc">цене(дешевые)</a>
+        <a asp-action="AllLots" asp-route-category="@ViewBag.category" asp-route-sortOrder="@ViewBag.PriceDes">цене(дорогие)</a>
+        <a asp-action="AllLots" asp-route-category="@ViewBag.category" asp-route-sortOrder="@ViewBag.DateAsc">дате(заканчивающиеся)</a>
+        <a asp-action="AllLots" asp-route-category="@ViewBag.category" asp-route-sortOrder="@ViewBag.DateDes">дате(новые)</a>
+    </div>
+
+    @if (Model.Count == 0)
+    {<h1>Сейчас нет выставленных лотов</h1>}
+    @foreach (Auction.Storage.Entity.Lot lot in Model)
+    {
+<a href="/Lot/@lot.Id">
+    <div class="lot">
+        <div id="price-closedate">
+            <div class="price">
+                <div class="center">
+                    <p>@lot.CurrentPrice </p>
+                    <img src="../media/ruble.svg" alt="рубль" />
+                </div>
+            </div>
+            <div id="closedate">
+                <p>Дата окончания:</p>
+                <p>@lot.FinalDate</p>
+            </div>
+        </div>
+        @if (lot.PathPhoto == null)
+        {
+<img src="../media/car.jpg" alt="" class="photo" /> }
+                else
+                {
+<img src="../@lot.PathPhoto" alt="" class="photo" />                }
+        <h3>@lot.Name</h3>
+    </div>
+</a>}
+</div>

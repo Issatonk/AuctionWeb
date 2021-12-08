@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Auction</title>
+    <!--<link rel="stylesheet" href="~/lib/bootstrap5/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="top-line">
+            <nav class="top-line-center">
+                <div id="usermenu">
+                    <div id="top-line-icons">
+                        @if (ViewBag.Balance != null)
+                        {
+            <p>Баланс: @ViewBag.Balance₽</p>}
+                        <a href="/WishList">
+                            <svg id="heart-hat">
+                                <use href="../media/heart.svg#icon-heart"></use>
+                            </svg>
+                        </a>
+                        <div id="hover">
+                            <img src="../media/ava.svg" alt="ава" />
+                            <p>@ViewBag.Name</p>
+                            <img src="../media/arrowdown.svg" alt="стрелочка вниз" />
+                            <ul id="submenu">
+                                <li><a href="/MakeDeposit">Пополнить счёт</a></li>
+                                <li><a href="/BalanceHistory">История пополнения</a></li>
+                                <li><a href="/Lots/MyLots">Мои лоты</a></li>
+                                <li><a href="/WishList">Список желаемого</a></li>
+                                <li><a href="/Lot/Purchase">Купленные лоты</a></li>
+                                <li><a href="/Lot/SellHist">Проданные лоты</a></li>
+                                <li><a href="/Auth/Logout">Выход из аккаунта</a></li>
+                            </ul>
+                        </div>
+                        <a href="/Lot/addlot"><div class="button">Разместить лот</div></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <nav class="navbar">
+            <div class="container">
+                <a asp-controller="Home" asp-action="" class="navbar-brand"><img src="../media/logo.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-category">
+                    <ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Lots/Машины">Машины</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Lots/Самолёты">Самолёты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Lots/Яхты">Яхты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Lots/Рабы">Люди</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Lots/Хаты">Хаты</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Lots/Электроника">Электроника</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Lots/Другое">Другое</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/Lots/All">Все лоты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

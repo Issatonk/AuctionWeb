@@ -1,0 +1,182 @@
+﻿.content {
+    width: 100%;
+    min-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 25px;
+}
+
+@media (min-width: 1200px) {
+    .content {
+        max-width: 1440px;
+    }
+}
+
+@media (max-width: 450px) {
+    .content {
+        flex-direction: column-reverse;
+        margin: 0 7px;
+    }
+}
+/*----------- Левая часть -----------------*/
+#main-img {
+    width: 100%;
+    margin-top: 7px;
+    max-height: 750px;
+    object-fit: cover;
+}
+
+.miniature-item {
+    max-width: 130px;
+    display: inline-block;
+    height: 130px;
+    object-fit: cover;
+}
+
+#header-strip {
+    width: 100%;
+    height: 7px;
+    background-color: #292929;
+}
+
+#photo-and-title {
+    width: 720px;
+    align-content: space-between;
+    padding: 0 0;
+}
+
+#photo-and-title h1 {
+    margin: 0 0;
+    width: 525px;
+    height: 37px;
+    left: 198px;
+    top: 199px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 37px;
+    color: #252525;
+}
+
+#title-heart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#title p {
+    margin: 0 0;
+    display: unset;
+}
+
+#heart {
+    color: #FFC1C1;
+}
+
+#heart:hover {
+    color: red;
+}
+
+#heart svg {
+    width: 42px;
+    height: 42px;
+}
+
+/*-------------- /Левая часть ------------------*/
+/*-------------- Правая часть -----------------*/
+#lot-description {
+    width: 720px;
+    align-content: space-between;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+#bets {
+    display: flex;
+    margin-top: 57px;
+}
+
+.bet {
+    width: 169px;
+    margin-right: 18px;
+}
+
+.bet > p {
+    margin: 0 0 5px 0;
+    text-align: center;
+}
+
+#current-bet {
+    background-color: #F58E2E;
+    width: 100%;
+}
+
+#current-bet p {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: white;
+}
+
+#min-step {
+    background-color: #CECECE;
+    width: 100%;
+}
+
+#min-step p {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: white;
+}
+
+#place-a-bet {
+    height: 45px;
+    border: 2px solid #292929;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+
+#place-a-bet input {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 18px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: center;
+}
+
+#current-bet,
+#min-step,
+#place-a-bet {
+    height: 45px;
+    box-sizing: border-box;
+    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bet img {
+    display: inline;
+    width: 21px;
+    height: 21px;
+}
+
+#description {
+    margin-top: 25px;
+}
+
+.relative-flex {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}

@@ -1,0 +1,41 @@
+﻿@model Auction.Storage.Entity.Lot
+<link rel="stylesheet" href="~/css/lot.css" />
+<div id="header-strip"></div>
+<div class="content">
+    <div id="photo-and-title">
+        <div id="title-heart">
+            <div id="title">
+                <h1>@Model.Name</h1>
+                <br /><p>Выставил: @ViewBag.Owner</p>
+            </div>
+
+
+        </div>
+        @if (Model.PathPhoto != null)
+        {
+    <img src="..@Model.PathPhoto" id="main-img" alt="" /> }
+                else
+                {
+    <img src="../media/car.jpg" id="main-img" alt="" />}
+        <div id="miniatures">
+            @foreach (var item in ViewBag.Miniatures)
+            {
+    <img src="..@item.Path" class="miniature-item" alt="фото" />}
+        </div>
+    </div>
+    <div id="lot-description">
+        <div id="bets">
+            <div class="bet">
+                <p>Вы купили у @ViewBag.Owner за</p>
+                <div id="current-bet">
+                    <p>@Model.CurrentPrice</p>
+                    <img src="../media/ruble.svg" alt="рубль" />
+                </div>
+            </div>
+          
+        </div>
+        <p id="description">
+            @Model.Description
+        </p>
+    </div>
+</div>

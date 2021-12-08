@@ -1,0 +1,47 @@
+﻿@model Auction.Storage.Entity.LoginModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Auction</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/registration.css" />
+</head>
+<body>
+    <header></header>
+
+    <div class="content">
+        <div id="authorization">
+            <h2>Вход</h2>
+            @if (ViewBag.Error1 != null)
+             {
+                <p class="error">@ViewBag.Error1</p>           
+             }
+            <form asp-action="Index" asp-controller="Auth" asp-anti-forgery="true">
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <input type="text" name="Login" placeholder="логин" required="required" />
+                <input name="Password" type="text" placeholder="пароль" required="required" />
+                <input type="submit" value="Войти" class="submit" />
+            </form>
+        </div>
+        <div id="registration">
+            <h2>Регистрация</h2>
+            @if (ViewBag.Error2 != null)
+            {
+                <p class="error">@ViewBag.Error2</p>            
+            }
+            <form asp-action="Registration" asp-controller="Auth" asp-anti-forgery="true">
+                <div class="validation" asp-validation-summary="ModelOnly"></div>
+                <input type="text" name="Login" required="required" placeholder="логин" />
+                <input type="text" name="Password" required="required" placeholder="пароль" />
+                <input type="submit" value="Зарегистрироваться" class="submit" />
+            </form>
+        </div>
+    </div>
+
+    <footer></footer>
+</body>
+</html>

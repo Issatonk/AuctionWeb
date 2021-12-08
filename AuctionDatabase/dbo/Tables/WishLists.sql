@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[WishLists] (
+    [Id]        UNIQUEIDENTIFIER NOT NULL,
+    [OwnerId]   UNIQUEIDENTIFIER NOT NULL,
+    [LotId]     UNIQUEIDENTIFIER NOT NULL,
+    [WishPrice] FLOAT (53)       NOT NULL,
+    CONSTRAINT [PK_WishLists] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
