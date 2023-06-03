@@ -1,11 +1,11 @@
-﻿using Auction.Storage.Entity;
+﻿using Auction.DAL.MSSQL.Entity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Auction.Storage
+namespace Auction.DAL.MSSQL
 {
     public class AuctionContext : DbContext
     {
@@ -16,8 +16,8 @@ namespace Auction.Storage
 
         public DbSet<Lot> Lots { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<BalanceReplenishment> BalanceReplenishments {get;set;}
-        
+        public DbSet<BalanceReplenishment> BalanceReplenishments { get; set; }
+
         public DbSet<FileModel> FileModel { get; set; }
         public DbSet<Income> Incomes { get; set; }
         public DbSet<PurchaseHistory> PurchaseHistories { get; set; }
