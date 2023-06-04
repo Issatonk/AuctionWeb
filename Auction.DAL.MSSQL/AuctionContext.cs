@@ -22,7 +22,6 @@ namespace Auction.DAL.MSSQL
         public DbSet<Income> Incomes { get; set; }
         public DbSet<PurchaseHistory> PurchaseHistories { get; set; }
         public DbSet<SellHistory> SellHistories { get; set; }
-        public DbSet<SellLot> SellLots { get; set; }
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<Bet> Bets { get; set; }
 
