@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Auction.Domain
 {
-    internal class Class1
+    public class PagedList
     {
     }
 }
