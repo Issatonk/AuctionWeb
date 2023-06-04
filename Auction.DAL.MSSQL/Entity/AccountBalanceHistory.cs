@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Auction.DAL.MSSQL.Entity;
 
-public class BalanceReplenishment
+public class AccountBalanceHistory
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -23,4 +23,7 @@ public class BalanceReplenishment
 
     [Required]
     public DateTime Date { get; set; }
+
+    [Required]
+
 }
