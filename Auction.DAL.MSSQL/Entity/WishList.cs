@@ -15,6 +15,5 @@ public class WishList
     [Required]
     public Guid LotId { get; set; }
 
-    [Required]
-    public double WishPrice { get; set; }
+    public double? WishPrice { get; set; }
 }
