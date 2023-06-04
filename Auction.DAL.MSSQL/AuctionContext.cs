@@ -16,7 +16,7 @@ namespace Auction.DAL.MSSQL
 
         public DbSet<Lot> Lots { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<AccountBalanceHistory> BalanceReplenishments { get; set; }
+        public DbSet<AccountBalanceHistory> AccountBalanceHistories { get; set; }
 
         public DbSet<FileModel> FileModel { get; set; }
         public DbSet<Income> Incomes { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Auction.DAL.MSSQL.Entity;
+using Auction.Interfaces.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
@@ -9,13 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Auction.DAL.MSSQL.Repositories;
-public class LotRepository : ILotRepository
+public class LotRepository : IRepository<Lot>
 {
-    private readonly AuctionContext _context;
+    private readonly DbSet<Lot> _lotDbSet;
 
     public LotRepository(AuctionContext context)
     {
-        _context = context;
+        _lotDbSet = context.Lots;
     }
 
     public Task<Lot> Create(Lot entity)
@@ -33,14 +34,14 @@ public class LotRepository : ILotRepository
         throw new NotImplementedException();
     }
     //
-    public async Task<IEnumerable<Lot>> GetPagedList(Expression<Func<Lot, bool>>? filtres = null, 
+    public async Task<IEnumerable<Lot>> GetMany(Expression<Func<Lot, bool>>? filtres = null, 
         Func<IQueryable<Lot>, IOrderedQueryable<Lot>>? sorts = null, 
         Func<IQueryable<Lot>, IIncludableQueryable<Lot, object>>? include = null, 
         int pageIndex = 0, 
         int pageSize = 20, 
         bool disableTracking = true)
     {
-        IQueryable<Lot> query = _context.Lots;
+        IQueryable<Lot> query = _lotDbSet;
 
         if (disableTracking)
         {
@@ -71,7 +72,7 @@ public class LotRepository : ILotRepository
         Func<IQueryable<Lot>, IIncludableQueryable<Lot, object>>? include = null, 
         bool disableTracking = true)
     {
-        IQueryable<Lot> query = _context.Lots;
+        IQueryable<Lot> query = _lotDbSet;
 
         if (disableTracking)
         {

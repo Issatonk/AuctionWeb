@@ -14,6 +14,15 @@ public interface IRepository<TEntity> where TEntity : class
         bool disableTracking = false
         );
 
+    Task<IEnumerable<TEntity>> GetMany(
+        Expression<Func<TEntity, bool>>? filtres = null,
+        Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? sorts = null,
+        Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+        int pageIndex = 0,
+        int pageSize = 20,
+        bool disableTracking = false
+        );
+
     Task<TEntity> Create(TEntity entity);
 
     Task<TEntity> Update(TEntity entity);
