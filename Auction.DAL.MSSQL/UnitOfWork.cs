@@ -1,4 +1,5 @@
 ﻿using Auction.Interfaces.DAL;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,25 +12,28 @@ public class UnitOfWork : IUnitOfWork
 {
     private readonly AuctionContext _context;
     private readonly Dictionary<Type, object> _repositories;
+    private readonly IServiceProvider _serviceProvider;
 
-    public UnitOfWork(AuctionContext context)
+    public UnitOfWork(AuctionContext context, IServiceProvider serviceProvider)
     {
         _context = context;
         _repositories = new Dictionary<Type, object>();
+        _serviceProvider = serviceProvider;
     }
 
-    public TRepository GetRepository<TRepository, TEntity>() 
-        where TEntity :class 
-        where TRepository : IRepository<TEntity>
+    public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
     {
-        var repositoryType = typeof(TRepository);
+        var entityType = typeof(TEntity);
 
-        if (_repositories.ContainsKey(repositoryType))
-            return (TRepository)_repositories[repositoryType];
+        if (_repositories.ContainsKey(entityType))
+        {
+            return (IRepository<TEntity>)_repositories[entityType];
+        }
 
-        var repository = (TRepository)Activator.CreateInstance(repositoryType, _context);
-        _repositories.Add(repositoryType, repository);
-        return repository;
+        var repositoryInstance = _serviceProvider.GetService<IRepository<TEntity>>();
+        _repositories.Add(entityType, repositoryInstance);
+
+        return repositoryInstance;
     }
 
     public async Task<int> SaveChangesAsync()

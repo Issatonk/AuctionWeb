@@ -25,5 +25,5 @@ public class AccountBalanceHistory
     public DateTime Date { get; set; }
 
     [Required]
-
+    public string Description { get; set; }
 }
