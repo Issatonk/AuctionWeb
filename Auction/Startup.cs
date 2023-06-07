@@ -18,6 +18,7 @@ using Auction.Managers.SellHistoris;
 using Auction.Managers.FileModels;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
+using Auction.DI;
 
 namespace Auction
 {
@@ -34,21 +35,26 @@ namespace Auction
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddScoped<ILotManager, LotManager>();
-            services.AddScoped<IBetManager, BetManager>();
-            services.AddScoped<IBalanceReplenishmentManager, BalanceReplenishmentManager>();
-            services.AddScoped<IUserManager, UserManager>();
-            services.AddScoped<IWishListManager, WishListManager>();
-            services.AddScoped<IAuthManager, AuthManager>();
-            services.AddScoped<IWishListManager, WishListManager>();
-            services.AddScoped<ISellLotManager, SellLotManager>();
-            services.AddScoped<IPurchaseHistoryManager, PurchaseHistoryManager>();
-            services.AddScoped<IIncomeManager, IncomeManager> ();
-            services.AddScoped<ISellHistoryManager, SellHistoryManager>();
-            services.AddScoped<IFileManager, FileManager>();
-            services.AddDbContext<AuctionContext>(options => options.UseSqlServer(
-                "Server = DESKTOP-3L127FC; Database=AuctionDatabase3; Trusted_Connection=true"));
-            //services.AddHostedService<TimedHostedService>();
+            //services.AddScoped<ILotManager, LotManager>();
+            //services.AddScoped<IBetManager, BetManager>();
+            //services.AddScoped<IBalanceReplenishmentManager, BalanceReplenishmentManager>();
+            //services.AddScoped<IUserManager, UserManager>();
+            //services.AddScoped<IWishListManager, WishListManager>();
+            //services.AddScoped<IAuthManager, AuthManager>();
+            //services.AddScoped<IWishListManager, WishListManager>();
+            //services.AddScoped<ISellLotManager, SellLotManager>();
+            //services.AddScoped<IPurchaseHistoryManager, PurchaseHistoryManager>();
+            //services.AddScoped<IIncomeManager, IncomeManager> ();
+            //services.AddScoped<ISellHistoryManager, SellHistoryManager>();
+            //services.AddScoped<IFileManager, FileManager>();
+
+            services.AddDbContext<DAL.MSSQL.AuctionContext>(options =>
+                options.UseInMemoryDatabase("AuctionDatabase"));
+
+            DI.DAL.Configure(services);
+            DI.BLL.Configure(services);
+
+                      
             services.AddSession();
             
             services.AddSession(options =>
