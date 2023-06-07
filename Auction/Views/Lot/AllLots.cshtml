@@ -1,4 +1,5 @@
-﻿@model ICollection<Auction.Storage.Entity.Lot>
+﻿@using Auction.MVC.Contracts;
+@model LotsViewModel
 <link rel="stylesheet" href="~/css/all_lots.css" />
 <div id="header-strip"></div>
 
@@ -15,9 +16,9 @@
         <a asp-action="AllLots" asp-route-category="@ViewBag.category" asp-route-sortOrder="@ViewBag.DateDes">дате(новые)</a>
     </div>
 
-    @if (Model.Count == 0)
+    @if (Model.Lots.Count() == 0)
     {<h1>Сейчас нет выставленных лотов</h1>}
-    @foreach (Auction.Storage.Entity.Lot lot in Model)
+    @foreach (var lot in Model.Lots)
     {
 <a href="/Lot/@lot.Id">
     <div class="lot">
