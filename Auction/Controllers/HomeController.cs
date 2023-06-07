@@ -16,22 +16,20 @@ namespace Auction.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        private IUserManager _userManager;
-        public HomeController(ILogger<HomeController> logger, IUserManager userManager)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _userManager = userManager;
         }
 
         public IActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                ViewBag.Name = User.Identity.Name;
-                ViewBag.Balance = _userManager.GetBalance(_userManager.GetIdByName(User.Identity.Name));
-                return View();
-            }
-            else
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    ViewBag.Name = User.Identity.Name;
+            //    ViewBag.Balance = _userManager.GetBalance(_userManager.GetIdByName(User.Identity.Name));
+            //    return View();
+            //}
+            //else
                 return View();
         }
 
