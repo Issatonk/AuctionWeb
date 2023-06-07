@@ -13,10 +13,6 @@ public class Lot
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
 
-    [Required]
-    public Guid OwnerID { get; set; }
-
-    [ForeignKey(nameof(OwnerID))]
     public User Owner { get; set; }
 
 
@@ -30,7 +26,7 @@ public class Lot
 
 
     [Required]
-    public double CurrentPrice { get; set; } //начальная цена
+    public decimal CurrentPrice { get; set; } //начальная цена
 
     [Required]
     public DateTime FinalDate { get; set; }
@@ -38,5 +34,7 @@ public class Lot
     [Required]
     public string Category { get; set; }
 
-    public string PathPhoto { get; set; }
+    public string? PathPhoto { get; set; }
+
+    public bool IsSold { get; set; }
 }
