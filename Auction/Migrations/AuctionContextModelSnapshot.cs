@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Auction.Migrations
 {
-    [DbContext(typeof(AuctionContext))]
+    [DbContext(typeof(OldAuctionContext))]
     partial class AuctionContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

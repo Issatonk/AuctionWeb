@@ -9,9 +9,9 @@ namespace Auction.Managers.BalanceReplenishments
 {
     public class BalanceReplenishmentManager : IBalanceReplenishmentManager
     {
-        private AuctionContext _context;
+        private OldAuctionContext _context;
 
-        public BalanceReplenishmentManager(AuctionContext context)
+        public BalanceReplenishmentManager(OldAuctionContext context)
         {
             _context = context;
         }

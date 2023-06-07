@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Auction.Storage
 {
-    public class AuctionContext : DbContext
+    public class OldAuctionContext : DbContext
     {
-        public AuctionContext(DbContextOptions<AuctionContext> options) : base(options)
+        public OldAuctionContext(DbContextOptions<OldAuctionContext> options) : base(options)
         {
 
         }

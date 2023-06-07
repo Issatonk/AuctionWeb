@@ -9,9 +9,9 @@ namespace Auction.Managers.Bets
 {
     public class BetManager : IBetManager
     {
-        private AuctionContext _context;
+        private OldAuctionContext _context;
 
-        public BetManager(AuctionContext context)
+        public BetManager(OldAuctionContext context)
         {
             _context = context;
         }

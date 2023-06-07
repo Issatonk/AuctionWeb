@@ -17,9 +17,9 @@ namespace Managers.Authorization
     public class AuthManager : IAuthManager
     {
 
-        private AuctionContext _context;
+        private OldAuctionContext _context;
 
-        public AuthManager(AuctionContext context)
+        public AuthManager(OldAuctionContext context)
         {
             _context = context;
         }

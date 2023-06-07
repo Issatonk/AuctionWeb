@@ -8,9 +8,9 @@ namespace Auction.Managers.Incomes
 {
     public class IncomeManager : IIncomeManager
     {
-        private AuctionContext _context;
+        private OldAuctionContext _context;
 
-        public IncomeManager(AuctionContext context)
+        public IncomeManager(OldAuctionContext context)
         {
             _context = context;
         }

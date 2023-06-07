@@ -10,8 +10,8 @@ namespace Auction.Managers.FileModels
 {
     public class FileManager : IFileManager
     {
-        AuctionContext _context;
-        public FileManager(AuctionContext context)
+        OldAuctionContext _context;
+        public FileManager(OldAuctionContext context)
         {
             _context = context;
         }

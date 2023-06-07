@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Auction.Migrations
 {
-    [DbContext(typeof(AuctionContext))]
+    [DbContext(typeof(OldAuctionContext))]
     [Migration("20210605182157_AddPhotoPath")]
     partial class AddPhotoPath
     {

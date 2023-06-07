@@ -8,9 +8,9 @@ namespace Auction.Managers.WishLists
 {
     public class WishListManager : IWishListManager
     {
-        private AuctionContext _context;
+        private OldAuctionContext _context;
 
-        public WishListManager(AuctionContext context)
+        public WishListManager(OldAuctionContext context)
         {
             _context = context;
         }

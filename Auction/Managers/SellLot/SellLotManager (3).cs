@@ -9,9 +9,9 @@ namespace Auction.Managers.SellLots
 {
     public class SellLotManager : ISellLotManager
     {
-        private AuctionContext _context;
+        private OldAuctionContext _context;
 
-        public SellLotManager(AuctionContext context)
+        public SellLotManager(OldAuctionContext context)
         {
             _context = context;
         }

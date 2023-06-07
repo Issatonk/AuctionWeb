@@ -9,8 +9,8 @@ namespace Auction.Managers.Users
 {
     public class UserManager : IUserManager
     {
-        private AuctionContext _context;
-        public UserManager(AuctionContext context)
+        private OldAuctionContext _context;
+        public UserManager(OldAuctionContext context)
         {
             _context = context;
         }

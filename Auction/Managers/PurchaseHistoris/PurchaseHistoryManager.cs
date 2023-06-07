@@ -8,9 +8,9 @@ namespace Auction.Managers.PurchaseHistoris
 {
     public class PurchaseHistoryManager : IPurchaseHistoryManager
     {
-        private AuctionContext _context;
+        private OldAuctionContext _context;
 
-        public PurchaseHistoryManager(AuctionContext context)
+        public PurchaseHistoryManager(OldAuctionContext context)
         {
             _context = context;
         }

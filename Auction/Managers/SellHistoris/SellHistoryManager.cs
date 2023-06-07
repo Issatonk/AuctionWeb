@@ -8,9 +8,9 @@ namespace Auction.Managers.SellHistoris
 {
     public class SellHistoryManager : ISellHistoryManager
     {
-        private AuctionContext _context;
+        private OldAuctionContext _context;
 
-        public SellHistoryManager(AuctionContext context)
+        public SellHistoryManager(OldAuctionContext context)
         {
             _context = context;
         }

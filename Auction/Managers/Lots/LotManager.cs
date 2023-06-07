@@ -11,9 +11,9 @@ namespace Auction.Managers.Lots
     public class LotManager : ILotManager
     {
 
-        private AuctionContext _context;
+        private OldAuctionContext _context;
 
-        public LotManager(AuctionContext context)
+        public LotManager(OldAuctionContext context)
         {
             _context = context;
         }
