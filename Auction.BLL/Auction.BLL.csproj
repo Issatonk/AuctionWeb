@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Auction.DAL.MSSQL\Auction.DAL.MSSQL.csproj" />
+    <ProjectReference Include="..\Auction.Domain\Auction.Domain.csproj" />
+    <ProjectReference Include="..\Auction.Infrostructure\Auction.Infrostructure.csproj" />
+    <ProjectReference Include="..\Auction.Interfaces\Auction.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>
