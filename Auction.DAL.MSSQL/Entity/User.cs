@@ -6,6 +6,6 @@ namespace Auction.DAL.MSSQL.Entity;
 public class User : IdentityUser<Guid>
 {
     [Required]
-    public Balance Balance { get; set; }
+    public virtual Balance Balance { get; set; }
 
 }
