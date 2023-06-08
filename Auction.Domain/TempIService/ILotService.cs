@@ -1,5 +1,6 @@
 ﻿using Auction.DAL.MSSQL.Entity;
-namespace Auction.Domain;
+
+namespace Auction.Domain.TempIService;
 
 public interface ILotService
 {
