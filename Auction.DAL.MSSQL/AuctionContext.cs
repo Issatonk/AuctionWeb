@@ -1,4 +1,5 @@
 ﻿using Auction.DAL.MSSQL.Entity;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,12 @@ public class AuctionContext : DbContext
     }
 
     public DbSet<Lot> Lots { get; set; }
+    public DbSet<IdentityUserClaim<Guid>> UsersClaims { get; set; }
+    public DbSet<IdentityUserRole<Guid>> UserRoles { get; set; }
+    public DbSet<IdentityRole<Guid>> Roles { get; set; } // Добавлено свойство для ролей
+
+
+
     public DbSet<User> Users { get; set; }
     public DbSet<AccountBalanceHistory> AccountBalanceHistories { get; set; }
 
@@ -24,6 +31,15 @@ public class AuctionContext : DbContext
     public DbSet<SellHistory> SellHistories { get; set; }
     public DbSet<WishList> WishLists { get; set; }
     public DbSet<Bet> Bets { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<IdentityUserRole<Guid>>()
+            .HasKey(r => new { r.UserId, r.RoleId });
+    }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

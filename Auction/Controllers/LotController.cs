@@ -1,4 +1,4 @@
-﻿using Auction.Domain;
+﻿using Auction.Domain.TempIService;
 using Auction.Managers.Lots;
 using Auction.MVC.Contracts;
 using Microsoft.AspNetCore.Authorization;
@@ -25,7 +25,7 @@ public class LotController : Controller
         {
             Id = lot.Id,
             OwnerId = lot.Owner.Id,
-            OwnerName = lot.Owner.Name,
+            OwnerName = lot.Owner.UserName,
             Name = lot.Name,
             Description = lot.Description,
             CurrentPrice = lot.CurrentPrice,
@@ -37,7 +37,7 @@ public class LotController : Controller
         return View(singleLotViewModel);
     }
 
-
+    [Authorize]
     public async Task<IActionResult> AllLotsAsync(string category)
     { 
         LotsViewModel viewModel = new LotsViewModel();

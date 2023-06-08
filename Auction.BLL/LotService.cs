@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Auction.Infrostructure;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore;
+using Auction.Domain.TempIService;
 
 namespace Auction.BLL;
 

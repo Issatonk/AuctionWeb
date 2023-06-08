@@ -31,9 +31,8 @@ public class UserRepository : IRepository<User>
         var updateEntity = await _userDbSet.FirstOrDefaultAsync(x => x.Id == entity.Id);
         if(updateEntity != null)
         {
-            updateEntity.Name = entity.Name;
+            updateEntity.UserName = entity.UserName;
             updateEntity.Balance = entity.Balance;
-            updateEntity.Password = entity.Password;
         }
         return _userDbSet.Update(updateEntity).Entity;
     }

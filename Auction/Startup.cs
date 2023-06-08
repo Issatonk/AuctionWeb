@@ -53,7 +53,7 @@ namespace Auction
 
             DI.DAL.Configure(services);
             DI.BLL.Configure(services);
-
+            DI.AuthDi.Configure(services);
                       
             services.AddSession();
             
@@ -63,12 +63,6 @@ namespace Auction
                 options.IdleTimeout = TimeSpan.FromSeconds(10);
                 options.Cookie.IsEssential = true;
             });
-            // установка конфигурации подключения
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => //CookieAuthenticationOptions
-                {
-                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Auth");
-                });
             
         }
 
@@ -88,6 +82,9 @@ namespace Auction
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+
+            app.UseMiddleware<ClaimsMiddleware>();
+
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();

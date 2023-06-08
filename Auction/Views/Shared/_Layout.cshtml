@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var balanceClaim = Context.User.Claims.FirstOrDefault(c => c.Type == "Balance");
+    var balance = balanceClaim != null ? decimal.Parse(balanceClaim.Value) : 0;
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -15,9 +20,10 @@
             <nav class="top-line-center">
                 <div id="usermenu">
                     <div id="top-line-icons">
-                        @if (ViewBag.Balance != null)
+                        @if (Context.User.FindFirst("Balance") != null)
                         {
-            <p>Баланс: @ViewBag.Balance₽</p>}
+                            <p>Баланс: @User.Claims.FirstOrDefault(c => c.Type == "Balance").Value ₽</p>
+                        }
                         <a href="/WishList">
                             <svg id="heart-hat">
                                 <use href="../media/heart.svg#icon-heart"></use>
@@ -25,7 +31,7 @@
                         </a>
                         <div id="hover">
                             <img src="../media/ava.svg" alt="ава" />
-                            <p>@ViewBag.Name</p>
+                            <p>@User.Identity.Name</p>
                             <img src="../media/arrowdown.svg" alt="стрелочка вниз" />
                             <ul id="submenu">
                                 <li><a href="/MakeDeposit">Пополнить счёт</a></li>
