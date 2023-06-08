@@ -1,4 +1,5 @@
-﻿@model Auction.Storage.Entity.Lot
+﻿@using Auction.MVC.Contracts;
+@model SingleLotViewModel
 <link rel="stylesheet" href="~/css/lot.css" />
 <div id="header-strip"></div>
 <div class="content">
@@ -7,7 +8,7 @@
             <div id="title">
                 <h1>@Model.Name</h1>
                 <p>Время окончания @Model.FinalDate</p>
-                <br /><p>Выставил: @ViewBag.Owner</p>
+                <br /><p>Выставил: @Model.OwnerName</p>
             </div>
             @if (ViewBag.isWish == true)
             {
@@ -15,7 +16,7 @@
                     Желаемое
                 </div>
             }
-            else if (ViewBag.AuthId != Model.OwnerID)
+            else if (ViewBag.AuthId != Model.OwnerId)
             {
         <a>
             <form method="post" action="~/Lot/AddWishList">
@@ -45,10 +46,13 @@
         <img src="../media/car.jpg" id="main-img" alt="" />
         }
         <div id="miniatures">
-            @foreach (var item in ViewBag.Miniatures)
-	    {
-            <img src="..@item.Path" class="miniature-item" alt="фото" />
-	    }
+            @if (ViewBag.Miniatures != null)
+            {
+                @foreach (var item in ViewBag.Miniatures)
+                {
+                    <img src="..@item.Path" class="miniature-item" alt="фото" />
+                }
+            }
         </div>
     </div>
     <div id="lot-description">
@@ -60,7 +64,7 @@
                     <img src="../media/ruble.svg" alt="рубль" />
                 </div>
             </div>
-            @if (ViewBag.AuthId != Model.OwnerID)
+            @if (ViewBag.AuthId != Model.OwnerId)
             {
             <div class="relative-flex">
                 <div class="bet">

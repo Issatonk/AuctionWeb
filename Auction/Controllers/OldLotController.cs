@@ -54,32 +54,32 @@ namespace Auction.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        [Route("Lot/{guid:Guid}")]
-        [Authorize]
-        public IActionResult Index(Guid guid)
-        {
-            Guid userId = _userManager.GetIdByName(User.Identity.Name);
-            ViewBag.Balance = _userManager.GetBalance(userId);
-            ViewBag.Name = User.Identity.Name;
-            var lot = _lotManager.GetLot(guid);
-            ViewBag.Owner = _userManager.GetById(lot.OwnerID).Name;
-            ViewBag.AuthId = userId;
-            ViewBag.Miniatures = _fileManager.GetByLotId(guid).ToList();
-            if (_wishManager.GetWishLotUser(guid, userId) != null)
-            {
-                ViewBag.IsWish = true;
-            }
-            else
-            {
-                ViewBag.IsWish = false;
-            }
-            var bets = _betManager.GetByLot(lot.Id);
-            if (bets == null)
-                ViewBag.betExists = false;
-            else ViewBag.betExists = true;
+        //[Route("Lot/{guid:Guid}")]
+        //[Authorize]
+        //public IActionResult Index(Guid guid)
+        //{
+        //    Guid userId = _userManager.GetIdByName(User.Identity.Name);
+        //    ViewBag.Balance = _userManager.GetBalance(userId);
+        //    ViewBag.Name = User.Identity.Name;
+        //    var lot = _lotManager.GetLot(guid);
+        //    ViewBag.Owner = _userManager.GetById(lot.OwnerID).Name;
+        //    ViewBag.AuthId = userId;
+        //    ViewBag.Miniatures = _fileManager.GetByLotId(guid).ToList();
+        //    if (_wishManager.GetWishLotUser(guid, userId) != null)
+        //    {
+        //        ViewBag.IsWish = true;
+        //    }
+        //    else
+        //    {
+        //        ViewBag.IsWish = false;
+        //    }
+        //    var bets = _betManager.GetByLot(lot.Id);
+        //    if (bets == null)
+        //        ViewBag.betExists = false;
+        //    else ViewBag.betExists = true;
 
-            return View(lot);
-        }
+        //    return View(lot);
+        //}
         [Route("PLot/{guid:Guid}")]
         public IActionResult IndexPurchase(Guid guid)
         {

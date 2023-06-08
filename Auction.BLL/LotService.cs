@@ -8,6 +8,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Auction.Infrostructure;
+using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore;
+
 namespace Auction.BLL;
 
 
@@ -71,4 +74,25 @@ public class LotService : ILotService
         var result = await lotRepository.GetMany(filtres: filter, sorts: sort);
         return result;
     }
+
+    public async Task<Lot> GetAsync(Guid lotId)
+    {
+        var lotRepository = _unitOfWork.GetRepository<Lot>();
+        Expression<Func<Lot, bool>> filter = lot => lot.Id == lotId;
+
+
+        Func<IQueryable<Lot>, IIncludableQueryable<Lot, object>> includeOwner = query =>
+        {
+            return query.Include(x => x.Owner);
+        };
+        var result = await lotRepository.GetFirstOrDefault(filter: filter, include: includeOwner);
+
+        if(result == null)
+        {
+            throw new Exception();
+        }
+
+        return result;
+    }
+
 }

@@ -1,5 +1,6 @@
 ﻿
 using Auction.BLL;
+using Auction.Domain;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Auction.DI;

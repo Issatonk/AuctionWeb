@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Auction.MVC.Contracts
+namespace Auction.MVC.Contracts;
+
+public class LotsViewModel
 {
-    public class LotsViewModel
-    {
-        public IEnumerable<Lot> Lots { get; set; }
-    }
+    public IEnumerable<Lot> Lots { get; set; }
 }
