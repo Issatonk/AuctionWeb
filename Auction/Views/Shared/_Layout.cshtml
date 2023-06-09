@@ -34,7 +34,7 @@
                             <p>@User.Identity.Name</p>
                             <img src="../media/arrowdown.svg" alt="стрелочка вниз" />
                             <ul id="submenu">
-                                <li><a href="/MakeDeposit">Пополнить счёт</a></li>
+                                <li><a asp-controller="Balance" asp-action="AddBalance">Пополнить счёт</a></li>
                                 <li><a href="/BalanceHistory">История пополнения</a></li>
                                 <li><a href="/Lots/MyLots">Мои лоты</a></li>
                                 <li><a href="/WishList">Список желаемого</a></li>

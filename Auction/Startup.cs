@@ -1,22 +1,9 @@
-using Auction.Managers.Bets;
-using Auction.Managers.Lots;
-using Auction.Managers.BalanceReplenishments;
-using Auction.Storage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Managers.Authorization;
-using Auction.Managers.Users;
-using Auction.Managers.WishLists;
-using Auction.Managers.SellLots;
-using Auction.Managers.PurchaseHistoris;
-using Auction.Managers.Incomes;
-using Auction.Managers.SellHistoris;
-using Auction.Managers.FileModels;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using System;
 using Auction.DI;
 
@@ -81,11 +68,15 @@ namespace Auction
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseRouting();
-
-            app.UseMiddleware<ClaimsMiddleware>();
 
             app.UseAuthentication();
+            app.UseMiddleware<ClaimsMiddleware>();
+
+            app.UseRouting();
+
+            
+
+            
             app.UseAuthorization();
             app.UseSession();
 

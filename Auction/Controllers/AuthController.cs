@@ -51,6 +51,7 @@ public class AuthController : Controller
         return RedirectToAction("AllLots", "Lot");
     }
 
+    [HttpGet]
     public async Task<IActionResult> Logout()
     {
         

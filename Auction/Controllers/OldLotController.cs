@@ -54,32 +54,6 @@ namespace Auction.Controllers
             _appEnvironment = appEnvironment;
         }
 
-        //[Route("Lot/{guid:Guid}")]
-        //[Authorize]
-        //public IActionResult Index(Guid guid)
-        //{
-        //    Guid userId = _userManager.GetIdByName(User.Identity.Name);
-        //    ViewBag.Balance = _userManager.GetBalance(userId);
-        //    ViewBag.Name = User.Identity.Name;
-        //    var lot = _lotManager.GetLot(guid);
-        //    ViewBag.Owner = _userManager.GetById(lot.OwnerID).Name;
-        //    ViewBag.AuthId = userId;
-        //    ViewBag.Miniatures = _fileManager.GetByLotId(guid).ToList();
-        //    if (_wishManager.GetWishLotUser(guid, userId) != null)
-        //    {
-        //        ViewBag.IsWish = true;
-        //    }
-        //    else
-        //    {
-        //        ViewBag.IsWish = false;
-        //    }
-        //    var bets = _betManager.GetByLot(lot.Id);
-        //    if (bets == null)
-        //        ViewBag.betExists = false;
-        //    else ViewBag.betExists = true;
-
-        //    return View(lot);
-        //}
         [Route("PLot/{guid:Guid}")]
         public IActionResult IndexPurchase(Guid guid)
         {
@@ -110,46 +84,6 @@ namespace Auction.Controllers
 
             return View(lot);
         }
-
-        //[Route("Lots/{category}")]
-        //[Authorize]
-        //public IActionResult AllLots(string category, SortState sortOrder = SortState.NoSort)
-        //{
-        //    ViewBag.login = User.Identity.Name;
-        //    ViewBag.Name = User.Identity.Name;
-        //    ViewBag.balance = _userManager.GetBalance(_userManager.GetIdByName(User.Identity.Name));
-
-        //    ViewBag.PriceAsc = SortState.PriceAsc;
-        //    ViewBag.PriceDes = SortState.PriceDes;
-        //    ViewBag.DateAsc = SortState.DateAsc;
-        //    ViewBag.DateDes = SortState.DateDes;
-        //    ViewBag.category = category;
-
-        //    AddSellTime();
-        //    List<Lot> lots = _lotManager.GetAll().ToList();
-        //    if (category != "All") 
-        //    {
-        //        lots = _lotManager.GetByCategory(category).ToList(); 
-        //    }
-        //    if (category == "MyLots") 
-        //    {
-        //        lots = _lotManager.GetMyLots(_userManager.GetIdByName(User.Identity.Name)).ToList();
-        //    }
-
-        //    lots = sortOrder switch
-        //    {
-        //        SortState.NoSort => lots,
-        //        SortState.PriceAsc => lots.OrderBy(lot => lot.CurrentPrice).ToList(),
-        //        SortState.PriceDes => lots.OrderByDescending(lot => lot.CurrentPrice).ToList(),
-        //        SortState.DateAsc => lots.OrderBy(lot => lot.FinalDate).ToList(),
-        //        SortState.DateDes => lots.OrderByDescending(lot => lot.FinalDate).ToList(),
-        //        _=>lots
-        //    };
-        //    return View(lots);
-        //}
-       
-
-        
       
         [Route("WishList")]
         [Authorize]
@@ -267,15 +201,6 @@ namespace Auction.Controllers
 
             return Redirect("/Lots/All");
         }
-        [Authorize]
-        [Route("MakeDeposit")]
-        public IActionResult MakeDeposit()
-        {
-            ViewBag.Balance = _userManager.GetBalance(_userManager.GetIdByName(User.Identity.Name));
-            ViewBag.Name = User.Identity.Name;
-            Console.WriteLine("\tПополнить счёт работает");
-            return View();
-        }
 
         [Authorize]
         [Route("BalanceHistory")]
@@ -321,17 +246,9 @@ namespace Auction.Controllers
             return View(x);
         }
 
-        public IActionResult MakeDeposit2(BalanceReplenishment bal)
-        {
-            bal.UserId = _userManager.GetIdByName(User.Identity.Name);
-            Console.WriteLine("\tsum "+ bal.Amount);
-            _balanceReplenishmentManager.Add(bal);
-            return Redirect("/Lots/All");
-        }
 
         public IActionResult AddWishList(Guid LotsId)
         {
-            //_lotManager.GetLot(LotsId);
            
             Console.WriteLine("awl "+LotsId);
             _wishManager.Add(_userManager.GetIdByName(User.Identity.Name), LotsId, 100);
@@ -357,18 +274,6 @@ namespace Auction.Controllers
                 _purchaseManager.Add(new PurchaseHistory() { LotId = lotId, OwnerId = bet.ManId });
                 _userManager.MakeDeposit(lot.OwnerID, bet.Price);
                 _incomeManager.Add(lot.CurrentPrice / 100);
-            }
-        }
-
-        public void AddSellTime()
-        {
-            List<Lot> lots = _lotManager.GetAll().ToList();
-            for (int i = 0; i < lots.Count; i++)
-            {
-                if (lots[i].FinalDate < DateTime.Now)
-                {
-                    AddSell(lots[i].Id);
-                }
             }
         }
     }
