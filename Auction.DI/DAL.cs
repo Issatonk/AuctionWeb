@@ -12,6 +12,7 @@ public class DAL
     {
 
         services.AddScoped<IRepository<Lot>, LotRepository>();
+        services.AddScoped<IRepository<AccountBalanceHistory>, AccountBalanceHistoryRepository>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 

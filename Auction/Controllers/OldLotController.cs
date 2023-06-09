@@ -201,16 +201,6 @@ namespace Auction.Controllers
 
             return Redirect("/Lots/All");
         }
-
-        [Authorize]
-        [Route("BalanceHistory")]
-        public IActionResult BalanceHistory()
-        {
-            ViewBag.Balance = _userManager.GetBalance(_userManager.GetIdByName(User.Identity.Name));
-            ViewBag.Name = User.Identity.Name;
-            var x = _balanceReplenishmentManager.GetByUser(_userManager.GetIdByName(User.Identity.Name));
-            return View(x);
-        }
         [Authorize]
         public IActionResult Purchase()
         {

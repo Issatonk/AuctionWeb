@@ -11,5 +11,6 @@ public class BLL
         services.AddScoped<ILotService, LotService>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IBalanceService, BalanceService>();
+        services.AddScoped<IAccountBalanceHistoryService, AccountBalanceHistoryService>();
     }
 }

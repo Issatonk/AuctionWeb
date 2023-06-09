@@ -19,7 +19,7 @@ public class AccountBalanceHistory
     public User User { get; set; }
 
     [Required]
-    public double Amount { get; set; }
+    public decimal Amount { get; set; }
 
     [Required]
     public DateTime Date { get; set; }
