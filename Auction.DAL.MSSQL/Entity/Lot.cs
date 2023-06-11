@@ -26,7 +26,7 @@ public class Lot
 
 
     [Required]
-    public decimal CurrentPrice { get; set; } //начальная цена
+    public decimal StartPrice { get; set; }
 
     [Required]
     public DateTime FinalDate { get; set; }
@@ -37,4 +37,16 @@ public class Lot
     public string? PathPhoto { get; set; }
 
     public bool IsSold { get; set; }
+
+    public decimal HighestBid { get; set; }
+
+    public User HighestBidder { get; set; }
+
+    public Lot()
+    {
+        HighestBid = StartPrice;
+        HighestBidder = null;
+    }
+
+
 }

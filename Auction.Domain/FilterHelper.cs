@@ -7,7 +7,7 @@ public class FilterHelper
 {
     public string? Category { get; set; }
 
-    public User? User { get; set; }
+    public Guid? UserId { get; set; }
 
     public bool? IsSold { get; set; }
 }

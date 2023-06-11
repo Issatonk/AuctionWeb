@@ -12,5 +12,7 @@ public class BLL
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IBalanceService, BalanceService>();
         services.AddScoped<IAccountBalanceHistoryService, AccountBalanceHistoryService>();
+        services.AddScoped<IBetService, BetService>();
+        services.AddScoped<IWishListService, WishListService>();
     }
 }

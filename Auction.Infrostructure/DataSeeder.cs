@@ -51,6 +51,7 @@ public class DataSeeder
         foreach (var lot in lots)
         {
             lot.Name = GetNextLotName();
+            lot.HighestBid = lot.StartPrice;
         }
         _context.Users.Add(user);
         _context.Lots.AddRange(lots);

@@ -20,14 +20,14 @@ public class AuctionContext : DbContext
     public DbSet<IdentityUserRole<Guid>> UserRoles { get; set; }
     public DbSet<IdentityRole<Guid>> Roles { get; set; } // Добавлено свойство для ролей
 
-
+    public DbSet<Balance> Balances { get; set; }
 
     public DbSet<User> Users { get; set; }
     public DbSet<AccountBalanceHistory> AccountBalanceHistories { get; set; }
 
     public DbSet<FileModel> FileModel { get; set; }
     public DbSet<Income> Incomes { get; set; }
-    public DbSet<PurchaseHistory> PurchaseHistories { get; set; }
+    public DbSet<PurchasedLot> PurchasedLot { get; set; }
     public DbSet<SellHistory> SellHistories { get; set; }
     public DbSet<WishList> WishLists { get; set; }
     public DbSet<Bet> Bets { get; set; }
@@ -38,6 +38,10 @@ public class AuctionContext : DbContext
 
         modelBuilder.Entity<IdentityUserRole<Guid>>()
             .HasKey(r => new { r.UserId, r.RoleId });
+        modelBuilder.Entity<User>()
+            .HasOne(u => u.Balance)
+            .WithOne()
+            .HasForeignKey<Balance>(b => b.UserId);
     }
 
 

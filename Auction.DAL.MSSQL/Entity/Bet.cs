@@ -13,16 +13,16 @@ public class Bet
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     [Required]
-    public Guid ManId { get; set; }
-    [ForeignKey(nameof(ManId))]
-    public User Man { get; set; }
+    public Guid UserId { get; set; }
+    [ForeignKey(nameof(UserId))]
+    public User User { get; set; }
     [Required]
-    public Guid LotsId { get; set; }
-    [ForeignKey(nameof(LotsId))]
-    public Lot Lots { get; set; }
+    public Guid LotId { get; set; }
+    [ForeignKey(nameof(LotId))]
+    public Lot Lot { get; set; }
 
     [Required]
-    public double Price { get; set; }
+    public decimal Price { get; set; }
 
     [Required]
     public DateTime Time { get; set; }

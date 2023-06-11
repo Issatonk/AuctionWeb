@@ -1,12 +1,7 @@
 ﻿using Auction.DAL.MSSQL.Entity;
 using Auction.Domain;
 using Auction.Interfaces.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using Auction.Infrostructure;
 using Microsoft.EntityFrameworkCore.Query;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +14,7 @@ namespace Auction.BLL;
 public class LotService : ILotService
 {
     private readonly IUnitOfWork _unitOfWork;
+
 
     public LotService(IUnitOfWork unitOfWork)
     {
@@ -42,9 +38,9 @@ public class LotService : ILotService
             {
                 filter = filter.And(lot => lot.Category == filterHelper.Category);
             }
-            if(filterHelper.User != null)
+            if(filterHelper.UserId != null)
             {
-                filter = filter.And(lot => lot.Owner.Id == filterHelper.User.Id);
+                filter = filter.And(lot => lot.Owner.Id == filterHelper.UserId);
             }
             if(filterHelper.IsSold != null)
             {
@@ -65,8 +61,8 @@ public class LotService : ILotService
             if (sortingHelper.Price != null)
             {
                 orderedQuery = sortingHelper.Price == true ?
-                    orderedQuery.ThenBy(lot => lot.CurrentPrice) :
-                    orderedQuery.ThenByDescending(lot => lot.CurrentPrice);
+                    orderedQuery.ThenBy(lot => lot.StartPrice) :
+                    orderedQuery.ThenByDescending(lot => lot.StartPrice);
             }
 
             return orderedQuery;

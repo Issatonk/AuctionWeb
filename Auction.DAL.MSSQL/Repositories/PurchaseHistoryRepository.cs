@@ -7,28 +7,28 @@ using System.Linq.Expressions;
 
 namespace Auction.DAL.MSSQL.Repositories;
 
-public class PurchaseHistoryRepository : IRepository<PurchaseHistory>
+public class PurchaseHistoryRepository : IRepository<PurchasedLot>
 {
-    private readonly DbSet<PurchaseHistory> _purchaseHistoryDbSet;
+    private readonly DbSet<PurchasedLot> _purchaseHistoryDbSet;
 
     public PurchaseHistoryRepository(AuctionContext context)
     {
-        _purchaseHistoryDbSet = context.PurchaseHistories;
+        _purchaseHistoryDbSet = context.PurchasedLot;
     }
-    public async Task<PurchaseHistory> Create(PurchaseHistory entity)
+    public async Task<PurchasedLot> Create(PurchasedLot entity)
     {
         return (await _purchaseHistoryDbSet.AddAsync(entity)).Entity;
     }
 
-    public async Task<IEnumerable<PurchaseHistory>> GetMany(
-        Expression<Func<PurchaseHistory, bool>>? filtres = null, 
-        Func<IQueryable<PurchaseHistory>, IOrderedQueryable<PurchaseHistory>>? sorts = null, 
-        Func<IQueryable<PurchaseHistory>, IIncludableQueryable<PurchaseHistory, object>>? include = null, 
+    public async Task<IEnumerable<PurchasedLot>> GetMany(
+        Expression<Func<PurchasedLot, bool>>? filtres = null, 
+        Func<IQueryable<PurchasedLot>, IOrderedQueryable<PurchasedLot>>? sorts = null, 
+        Func<IQueryable<PurchasedLot>, IIncludableQueryable<PurchasedLot, object>>? include = null, 
         int pageIndex = 0, 
         int pageSize = 20, 
         bool disableTracking = true)
     {
-        IQueryable<PurchaseHistory> query = _purchaseHistoryDbSet;
+        IQueryable<PurchasedLot> query = _purchaseHistoryDbSet;
 
         if (disableTracking)
         {
@@ -52,17 +52,17 @@ public class PurchaseHistoryRepository : IRepository<PurchaseHistory>
             .Take(pageSize)
             .ToListAsync();
     }
-    public Task<PurchaseHistory> Delete(PurchaseHistory entity)
+    public Task<PurchasedLot> Delete(PurchasedLot entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task<PurchaseHistory?> GetFirstOrDefault(Expression<Func<PurchaseHistory, bool>> filter, Func<IQueryable<PurchaseHistory>, IOrderedQueryable<PurchaseHistory>>? sorts = null, Func<IQueryable<PurchaseHistory>, IIncludableQueryable<PurchaseHistory, object>>? include = null, bool disableTracking = false)
+    public Task<PurchasedLot?> GetFirstOrDefault(Expression<Func<PurchasedLot, bool>> filter, Func<IQueryable<PurchasedLot>, IOrderedQueryable<PurchasedLot>>? sorts = null, Func<IQueryable<PurchasedLot>, IIncludableQueryable<PurchasedLot, object>>? include = null, bool disableTracking = false)
     {
         throw new NotImplementedException();
     }
 
-    public Task<PurchaseHistory> Update(PurchaseHistory entity)
+    public Task<PurchasedLot> Update(PurchasedLot entity)
     {
         throw new NotImplementedException();
     }

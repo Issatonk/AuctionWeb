@@ -2,6 +2,9 @@
 using Auction.Domain.TempIService;
 using Auction.Interfaces.DAL;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Query;
+using System.Data.Entity;
+using System.Linq.Expressions;
 using System.Security.Claims;
 
 namespace Auction.BLL;
@@ -18,7 +21,21 @@ public class BalanceService : IBalanceService
         _signInManager = signInManager;
         _unitOfWork = unitOfWork;
     }
+    public async Task<Balance> GetBalanceByUserId(Guid userId)
+    {
+        var balanceRepository = _unitOfWork.GetRepository<Balance>();
+        Expression<Func<Balance, bool>> filter = balance => balance.UserId == userId;
 
+
+        var result = await balanceRepository.GetFirstOrDefault(filter: filter);
+
+        if (result == null)
+        {
+            throw new Exception();
+        }
+
+        return result;
+    }
     public async Task<bool> UpdateBalance(string username, decimal amount)
     {
 
@@ -39,6 +56,10 @@ public class BalanceService : IBalanceService
                     Description = "Пополнение баланса",
                     User = user
                 });
+                var balanceRepository = _unitOfWork.GetRepository<Balance>();
+                Expression<Func<Balance, bool>> userById = x => x.UserId == user.Id;
+                var userBalance = await balanceRepository.GetFirstOrDefault(filter: userById, disableTracking: false);
+                userBalance.Amount = balance;
                 if (createResult.Id != 0) 
                 { 
                     await _unitOfWork.SaveChangesAsync();
@@ -57,5 +78,3 @@ public class BalanceService : IBalanceService
 
 
 }
-
-

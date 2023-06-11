@@ -2,6 +2,7 @@
 using Auction.Interfaces.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace Auction.DAL.MSSQL.Repositories;
@@ -36,9 +37,28 @@ public class UserRepository : IRepository<User>
         }
         return _userDbSet.Update(updateEntity).Entity;
     }
-    public Task<User?> GetFirstOrDefault(Expression<Func<User, bool>> filter, Func<IQueryable<User>, IOrderedQueryable<User>>? sorts = null, Func<IQueryable<User>, IIncludableQueryable<User, object>>? include = null, bool disableTracking = false)
+    public async Task<User?> GetFirstOrDefault(Expression<Func<User, bool>> filter, Func<IQueryable<User>, IOrderedQueryable<User>>? sorts = null, Func<IQueryable<User>, IIncludableQueryable<User, object>>? include = null, bool disableTracking = false)
     {
-        throw new NotImplementedException();
+        IQueryable<User> query = _userDbSet;
+
+        if (disableTracking)
+        {
+            query = query.AsNoTracking();
+        }
+        if (include is not null)
+        {
+            query = include(query);
+        }
+        if (filter is not null)
+        {
+            query = query.Where(filter);
+        }
+        if (sorts is not null)
+        {
+            query = sorts(query);
+        }
+
+        return await query.FirstOrDefaultAsync();
     }
 
     public Task<IEnumerable<User>> GetMany(Expression<Func<User, bool>>? filtres = null, Func<IQueryable<User>, IOrderedQueryable<User>>? sorts = null, Func<IQueryable<User>, IIncludableQueryable<User, object>>? include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = false)

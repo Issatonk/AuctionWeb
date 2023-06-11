@@ -4,18 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Auction.DAL.MSSQL.Entity;
 
-public class PurchaseHistory
+public class PurchasedLot
 {
 
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
-
-    [Required]
     public Guid LotId { get; set; }
+    public Lot Lot { get; set; }
 
-    [Required]
-    public Guid OwnerId { get; set; }
+    public Guid UserId { get; set; }
+    public User User { get; set; }
 
-
+    public DateTime DateTime { get; set; }
 }

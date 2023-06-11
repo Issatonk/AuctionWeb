@@ -18,23 +18,22 @@
             }
             else if (ViewBag.AuthId != Model.OwnerId)
             {
-        <a>
-            <form method="post" action="~/Lot/AddWishList">
-                <div id="heart">
-                    <svg>
-                        <use href="../media/heart.svg#icon-heart"></use>
-                    </svg>
-                </div>
-                <input type="hidden" name="LotsId" value="@Model.Id" />
-                <input type="submit" value="" />
-            </form>
-        </a>}
+                <form method="post" asp-controller="WishList" asp-action="Create">
+                    <div id="heart">
+                        <svg>
+                            <use href="../media/heart.svg#icon-heart"></use>
+                        </svg>
+                    </div>
+                    <input type="hidden" name="lotId" value="@Model.Id" />
+                    <input type="submit" value="" />
+                </form>
+            }
 
             @if (ViewBag.betExists == true)
             {
-        <form method="post" action="~/Lot/Selllot">
+        <form method="post" action="~/Lot/">
             <input type="hidden" name="lotId" value="@Model.Id" />
-            <input type="submit" value="Отправить в проданное" />
+            <input type="submit" value="ОтправSelllotить в проданное" />
         </form>}
         </div>
         @if(Model.PathPhoto !=null)
@@ -60,7 +59,7 @@
             <div class="bet">
                 <p>Текущая ставка</p>
                 <div id="current-bet">
-                    <p>@Model.CurrentPrice</p>
+                    <p>@Model.StartPrice</p>
                     <img src="../media/ruble.svg" alt="рубль" />
                 </div>
             </div>
@@ -71,9 +70,9 @@
                     <p>Сделать ставку</p>
                     <div id="place-a-bet">
                         
-                        <form method="post" action="~/Lot/MakeBet">
-                            <input type="number" name="bet" value="" placeholder="Введите цену" maxlength="12" />
-                            <input type="hidden" name="LotsId" value="@Model.Id"/>
+                        <form method="post" asp-controller="Bet" asp-action="CreateBet">
+                            <input type="number" name="amount" value="" placeholder="Введите цену" maxlength="12" />
+                            <input type="hidden" name="lotId" value="@Model.Id"/>
                             <input type="submit" value="Отправить" />
                             @*<img src="../media/hammer-btn.svg" alt="рубль" id="hammer-btn" />*@
                         </form>

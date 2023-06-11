@@ -13,6 +13,10 @@ public class DAL
 
         services.AddScoped<IRepository<Lot>, LotRepository>();
         services.AddScoped<IRepository<AccountBalanceHistory>, AccountBalanceHistoryRepository>();
+        services.AddScoped<IRepository<Bet>, BetRepository>();
+        services.AddScoped<IRepository<User>, UserRepository>();
+        services.AddScoped<IRepository<Balance>, BalanceRepository>();
+        services.AddScoped<IRepository<WishList>, WishListRepository>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 

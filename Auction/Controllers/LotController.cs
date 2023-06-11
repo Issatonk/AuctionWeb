@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Auction.MVC.Controllers;
@@ -28,7 +30,8 @@ public class LotController : Controller
             OwnerName = lot.Owner.UserName,
             Name = lot.Name,
             Description = lot.Description,
-            CurrentPrice = lot.CurrentPrice,
+            StartPrice = lot.StartPrice,
+            CurrentPrice = lot.HighestBid,
             FinalDate = lot.FinalDate,
             Category = lot.Category,
             PathPhoto = lot.PathPhoto,
@@ -43,5 +46,16 @@ public class LotController : Controller
         LotsViewModel viewModel = new LotsViewModel();
         viewModel.Lots = await _lotService.GetPaged(new Domain.FilterHelper(), new Domain.SortingHelper());
         return View(viewModel);
+    }
+    [Authorize]
+    public async Task<IActionResult> MyLotsAsync()
+    {
+        LotsViewModel viewModel = new LotsViewModel();
+        Guid.TryParse(
+               HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value,
+                out Guid userId
+                );
+        viewModel.Lots = await _lotService.GetPaged(new Domain.FilterHelper() { UserId = userId}, new Domain.SortingHelper());
+        return View("AllLots", viewModel);
     }
 }

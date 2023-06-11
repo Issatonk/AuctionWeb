@@ -15,5 +15,6 @@ public class WishList
     [Required]
     public Guid LotId { get; set; }
 
-    public double? WishPrice { get; set; }
+    [ForeignKey("LotId")]
+    public Lot Lot { get; set; }
 }

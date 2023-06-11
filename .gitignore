@@ -361,5 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/Auction.BLL/Class1.cs
-/Auction.BLL/Auction.BLL.csproj
+

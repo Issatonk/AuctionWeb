@@ -1,10 +1,7 @@
-﻿using Auction.Storage.Entity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Auction.Domain.TempIService;
-using System.Linq;
+using Auction.MVC.Contracts;
 
 namespace Auction.Controllers;
 
