@@ -27,10 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\photo\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Auction.DAL.MSSQL\Auction.DAL.MSSQL.csproj" />
     <ProjectReference Include="..\Auction.DI\Auction.DI.csproj" />
     <ProjectReference Include="..\Auction.Domain\Auction.Domain.csproj" />
